@@ -92,6 +92,15 @@
         }
         h2 i { margin-right: 12px; color: var(--accent); font-size: 1.1rem; }
 
+        /* About Text Style */
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        .about-text strong { color: var(--accent); }
+
         /* Timeline Items (Experience & Education) */
         .timeline-item {
             position: relative;
@@ -195,24 +204,34 @@
 <body>
 
     <aside>
-        <img src="tuafoto.jpg" alt="Tommaso Arone" class="profile-photo">
+        <img src="1683149504170.jpg" alt="Tommaso Arone" class="profile-photo">
         
         <h1>Tommaso Arone</h1>
         <span class="role">Machine Learning Engineer</span>
 
         <ul class="contact-info">
             <li><i class="fas fa-map-marker-alt"></i> Milan, Italy</li>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:your.email@example.com">email@example.com</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:tommasoarone@gmail.com">tommasoarone@gmail.com</a></li>
             <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/tommaso-arone-44761b25a/" target="_blank">LinkedIn Profile</a></li>
         </ul>
 
         <div class="social-links">
-            <a href="https://github.com/tuousername" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
+            <a href="https://github.com/aronetommaso/TommasoArone" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
     </aside>
 
     <main>
         
+        <section id="about">
+            <h2><i class="fas fa-user"></i> About Me</h2>
+            <p class="about-text">
+                I am a driven <strong>working student</strong>, currently serving as a Machine Learning Engineer at Technoprobe while pursuing my Master's Degree in Data Science.
+            </p>
+            <p class="about-text">
+                With a rigorous <strong>background in Statistics</strong> (110 cum Laude), I possess a deep understanding of probability theory and uncertainty quantification. I am passionate about bridging the gap between theoretical statistical modeling and modern AI, aiming to build <strong>robust and explainable Machine Learning systems</strong>.
+            </p>
+        </section>
+
         <section id="experience">
             <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
 
@@ -307,7 +326,7 @@
             <p style="margin-bottom: 20px; color: var(--text-secondary);">
                 Check out my latest code, machine learning experiments, and contributions on my GitHub profile.
             </p>
-            <a href="https://github.com/tuousername" target="_blank" class="btn">
+            <a href="https://github.com/aronetommaso/TommasoArone" target="_blank" class="btn">
                 <i class="fab fa-github"></i> Visit my GitHub Portfolio
             </a>
         </section>
