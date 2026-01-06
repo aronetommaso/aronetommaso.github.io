@@ -168,6 +168,75 @@
         .skill-category { margin-bottom: 10px; }
         .skill-category h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
 
+        /* --- PORTFOLIO GRID STYLES --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            background: #fff;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+        
+        .project-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent);
+            font-weight: 700;
+            background: var(--tag-bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pushes the link to bottom */
+        }
+
+        .project-link {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.2s;
+        }
+        .project-link:hover { color: var(--accent); }
+        .project-link i { margin-right: 5px; }
+
         /* Button */
         .btn {
             display: inline-flex;
@@ -198,6 +267,7 @@
             .profile-photo { margin: 0 auto 25px auto; }
             .contact-info li { justify-content: center; }
             .social-links { justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -322,13 +392,79 @@
         </section>
 
         <section id="portfolio">
-            <h2><i class="fas fa-laptop-code"></i> Projects & Portfolio</h2>
-            <p style="margin-bottom: 20px; color: var(--text-secondary);">
-                Check out my latest code, machine learning experiments, and contributions on my GitHub profile.
+            <h2><i class="fas fa-laptop-code"></i> Projects</h2>
+            <p style="margin-bottom: 25px; color: var(--text-secondary);">
+                A collection of projects developed during my academic path and personal research.
             </p>
-            <a href="https://github.com/aronetommaso/TommasoArone" target="_blank" class="btn">
-                <i class="fab fa-github"></i> Visit my GitHub Portfolio
-            </a>
+            
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div>
+                        <span class="project-type">Individual Project</span>
+                        <h3 class="project-title">Tombola Montecarlo Simulation</h3>
+                        <p class="project-desc">
+                            A Python-based simulation of the Italian Tombola game to study probability distributions and winning strategies using Monte Carlo methods.
+                        </p>
+                    </div>
+                    <a href="https://github.com/aronetommaso/TombolaSimulation" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <span class="project-type">MSc Data Science</span>
+                        <h3 class="project-title">Global Warming Analysis</h3>
+                        <p class="project-desc">
+                            Developed for the <em>Data Visualization</em> exam. Focuses on plotting complex climate data to visualize global warming trends effectively.
+                        </p>
+                    </div>
+                    <a href="https://github.com/aronetommaso/DataViz-Project/tree/main" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <span class="project-type">MSc Data Science</span>
+                        <h3 class="project-title">Bitcoin Market Analysis</h3>
+                        <p class="project-desc">
+                            Developed for the <em>Data Management</em> exam. Covers data storage strategies, data modeling, and integration of market news.
+                        </p>
+                    </div>
+                    <a href="https://github.com/aronetommaso/DataMan-Project" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <span class="project-type">BSc Statistics</span>
+                        <h3 class="project-title">Exoplanet Temperature Study</h3>
+                        <p class="project-desc">
+                            Developed for <em>Computational Statistics</em>. Analysis of exoplanet temperatures using advanced regression and classification models.
+                        </p>
+                    </div>
+                    <a href="https://github.com/aronetommaso/Computational-Statistic-Project" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <span class="project-type">BSc Statistics</span>
+                        <h3 class="project-title">Earthquake Classification</h3>
+                        <p class="project-desc">
+                            Developed for <em>Data Mining</em>. Application of classification techniques to distinguish seismic events into earthquake and non-earthquake categories.
+                        </p>
+                    </div>
+                    <a href="https://github.com/aronetommaso/Data-Mining-Project" target="_blank" class="project-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+
+            </div>
         </section>
 
     </main>
