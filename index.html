@@ -3,154 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tommaso Arone - Academic Profile</title>
+    <title>Tommaso Arone — ML Engineer & Data Scientist</title>
 
-    <!-- Fonts: Georgia for headings (academic feel), Inter for clean readable text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            /* Academic minimal palette - Strictly avoiding blue */
-            --bg-body: #ffffff;
-            --text-main: #222222;
-            --text-secondary: #555555;
-            --accent: #8b0000; /* Dark Crimson / Burgundy */
-            --border: #e2e8f0;
-            --bg-light: #f9f9f9;
+            --bg: #faf9f7;
+            --surface: #f3f1ec;
+            --border: #ddd9d0;
+            --text: #1a1a18;
+            --muted: #6b6860;
+            --accent: #8b2e00;      /* Burnt sienna / academic red */
+            --accent-light: #f5ece6;
+            --mono: 'JetBrains Mono', monospace;
+            --serif: 'EB Garamond', Georgia, serif;
+            --body: 'Libre Baskerville', Georgia, serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            background: var(--bg-body);
-            line-height: 1.7;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 50px 20px;
+            font-family: var(--body);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.75;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Lora', serif;
-            color: var(--text-main);
-        }
-
-        h1 { font-size: 2.2rem; font-weight: 600; margin-bottom: 5px; }
-        h2 { 
-            font-size: 1.4rem; 
-            font-weight: 600; 
-            margin-top: 40px; 
-            margin-bottom: 20px; 
-            padding-bottom: 5px; 
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(250,249,247,0.93);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
-        }
-        h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; }
-        
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* --- HEADER --- */
-        header {
+            padding: 0 max(40px, 5vw);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 40px;
+            height: 56px;
         }
 
-        .header-content {
-            flex: 1;
+        .nav-logo {
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--muted);
+            letter-spacing: 0.05em;
         }
 
-        .role {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .contact-links {
+        .nav-links {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            font-size: 0.95rem;
+            gap: 28px;
+            list-style: none;
         }
 
-        .contact-links a {
-            color: var(--text-secondary);
+        .nav-links a {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── LAYOUT ── */
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 40px 80px;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 48px;
+            align-items: start;
+            padding-bottom: 56px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 64px;
+        }
+
+        .hero-name {
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 6px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-title {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .hero-bio {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .hero-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            text-decoration: none;
+            color: var(--muted);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 2px;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .hero-link:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .hero-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            filter: grayscale(15%);
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+        }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0 28px;
+        }
+
+        .tl-date {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            padding-top: 3px;
+            line-height: 1.5;
+        }
+
+        .tl-content {}
+
+        .tl-title {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .tl-org {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        .contact-links a:hover {
+        .tl-org .badge {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 1px 8px;
+            border-radius: 2px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border: 1px solid #e8d5cc;
+        }
+
+        .tl-desc {
+            font-size: 0.92rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .tl-desc p { margin-bottom: 8px; }
+        .tl-desc p:last-child { margin-bottom: 0; }
+
+        .tl-bullets {
+            margin-top: 10px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .tl-bullets li {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.7;
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 6px;
+        }
+
+        .tl-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .tl-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+            font-family: var(--mono);
+            font-size: 0.7rem;
             color: var(--accent);
             text-decoration: none;
+            letter-spacing: 0.05em;
         }
 
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--border);
-            margin-left: 30px;
-        }
+        .tl-link:hover { text-decoration: underline; }
 
-        /* --- SECTIONS --- */
-        p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-        }
-
-        ul {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        /* --- LIST ENTRIES (Experience, Education) --- */
-        .entry {
-            margin-bottom: 25px;
-        }
-
-        .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 5px;
-        }
-
-        .entry-title {
-            font-weight: 600;
-        }
-
-        .entry-meta {
-            color: var(--text-secondary);
-            font-style: italic;
-            font-family: 'Lora', serif;
-        }
-
-        .entry-date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
+        /* ── TAGS ── */
         .tags {
             display: flex;
             flex-wrap: wrap;
@@ -159,229 +285,456 @@
         }
 
         .tag {
-            background: var(--bg-light);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.05em;
+            color: var(--muted);
             border: 1px solid var(--border);
-            color: var(--text-secondary);
             padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            border-radius: 2px;
+            background: var(--surface);
         }
 
-        /* --- CONFERENCES & PROJECTS --- */
-        .block-quote {
-            background: var(--bg-light);
-            border-left: 3px solid var(--accent);
-            padding: 15px 20px;
-            margin-top: 10px;
-            font-size: 0.95rem;
-            color: #444;
+        /* ── RESEARCH INTERESTS ── */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
-        .project-list {
-            list-style: none;
-            padding-left: 0;
+        .interest-card {
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 20px 22px;
+            background: var(--surface);
+            transition: border-color 0.2s;
         }
 
-        .project-list li {
-            margin-bottom: 15px;
-            padding-left: 0;
+        .interest-card:hover {
+            border-color: var(--accent);
         }
 
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .profile-photo {
-                margin: 0 0 20px 0;
-            }
-            .contact-links {
-                justify-content: center;
-            }
-            .entry-header {
-                flex-direction: column;
-            }
+        .interest-title {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .interest-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ── CONFERENCES ── */
+        .conf-item {
+            border-left: 2px solid var(--border);
+            padding: 0 0 0 20px;
+            margin-bottom: 28px;
+        }
+
+        .conf-item:hover { border-left-color: var(--accent); }
+
+        .conf-name {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .conf-meta {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .conf-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        /* ── PROJECTS ── */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-row:last-child { border-bottom: none; }
+
+        .proj-type {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        .proj-title {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .proj-desc {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .proj-link {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 2px;
+            white-space: nowrap;
+            transition: color 0.2s, border-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 4px;
+        }
+
+        .proj-link:hover { color: var(--accent); border-color: var(--accent); }
+
+        /* ── SKILLS ── */
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .skill-group h4 {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer p {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 700px) {
+            .page-wrapper { padding: 80px 20px 60px; }
+            .hero { grid-template-columns: 1fr; }
+            .hero-photo { width: 100px; height: 100px; }
+            .tl-item { grid-template-columns: 1fr; gap: 4px; }
+            .interests-grid { grid-template-columns: 1fr; }
+            .skills-section { grid-template-columns: 1fr 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-content">
-            <h1>Tommaso Arone</h1>
-            <span class="role">Master's Student in Data Science & Machine Learning Engineer</span>
-            
-            <div class="contact-links">
-                <a href="mailto:tommasoarone@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://github.com/aronetommaso/TommasoArone" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://www.linkedin.com/in/tommaso-arone-44761b25a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <span style="color: var(--text-secondary);"><i class="fas fa-map-marker-alt"></i> Milan, Italy</span>
+<nav>
+    <span class="nav-logo">tommaso.arone</span>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#conferences">Talks & Events</a></li>
+    </ul>
+</nav>
+
+<div class="page-wrapper">
+
+    <!-- HERO -->
+    <div class="hero" id="about">
+        <div>
+            <div class="hero-title">Machine Learning Engineer &amp; Data Scientist</div>
+            <h1 class="hero-name">Tommaso Arone</h1>
+            <p class="hero-bio">
+                I am a working student at the intersection of rigorous statistical theory and industrial AI. Currently a Junior ML Engineer at Technoprobe and a Master's student in Data Science at the University of Milano-Bicocca, I build robust and explainable machine learning systems grounded in probabilistic reasoning and uncertainty quantification.
+            </p>
+            <div class="hero-links">
+                <a class="hero-link" href="mailto:tommasoarone@gmail.com"><i class="fas fa-envelope"></i> tommasoarone@gmail.com</a>
+                <a class="hero-link" href="https://www.linkedin.com/in/tommaso-arone-44761b25a/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a class="hero-link" href="https://github.com/aronetommaso/TommasoArone" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a class="hero-link" href="#"><i class="fas fa-map-marker-alt"></i> Milan, Italy</a>
             </div>
         </div>
-        <img src="1683149504170.jpg" alt="Tommaso Arone" class="profile-photo">
-    </header>
+        <img src="1683149504170.jpg" alt="Tommaso Arone" class="hero-photo">
+    </div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            I am a driven working student, currently serving as a Machine Learning Engineer at Technoprobe while pursuing my Master's Degree in Data Science.
-        </p>
-        <p>
-            With a rigorous background in Statistics (110 cum Laude), I possess a deep understanding of probability theory and uncertainty quantification. I am passionate about bridging the gap between theoretical statistical modeling and modern AI, aiming to build robust and explainable Machine Learning systems.
-        </p>
-    </section>
-
-    <section id="research-interests">
-        <h2>Research Interests</h2>
-        <div class="tags" style="font-family: 'Inter', sans-serif; font-weight: 500;">
-            <span class="tag" style="border-color: var(--accent); color: var(--accent);">AutoML</span>
-            <span class="tag" style="border-color: var(--accent); color: var(--accent);">Uncertainty Quantification</span>
-            <span class="tag" style="border-color: var(--accent); color: var(--accent);">Large Language Models (LLMs)</span>
-            <span class="tag" style="border-color: var(--accent); color: var(--accent);">Bayesian Statistics</span>
+    <!-- RESEARCH INTERESTS -->
+    <section id="research">
+        <div class="section-label">Research Interests</div>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-title">AutoML &amp; Neural Architecture Search</div>
+                <div class="interest-desc">Automated model selection, hyperparameter optimization, and self-configuring pipelines that reduce human-in-the-loop dependencies in production systems.</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-title">Uncertainty Quantification</div>
+                <div class="interest-desc">Epistemic and aleatoric uncertainty estimation in deep learning, including conformal prediction, calibration, and confidence-aware deployment in safety-critical environments.</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-title">Large Language Models</div>
+                <div class="interest-desc">Efficient fine-tuning strategies (LoRA, PEFT), alignment, and applied LLM integration for structured domain tasks including scientific and industrial analytics.</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-title">Bayesian Statistics &amp; Modeling</div>
+                <div class="interest-desc">Hierarchical Bayesian models, MCMC inference, and probabilistic programming (PyMC) applied to complex real-world data with principled uncertainty propagation.</div>
+            </div>
         </div>
     </section>
 
+    <!-- EXPERIENCE -->
     <section id="experience">
-        <h2>Work Experience</h2>
+        <div class="section-label">Work Experience</div>
+        <div class="timeline">
 
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Junior Machine Learning Engineer</div>
-                <div class="entry-date">Sep 2025 - Present</div>
+            <div class="tl-item">
+                <div class="tl-date">Sep 2025<br>— Present</div>
+                <div class="tl-content">
+                    <div class="tl-title">Junior Machine Learning Engineer</div>
+                    <div class="tl-org">Technoprobe <span class="badge">Full-time</span></div>
+                    <div class="tl-desc">
+                        <p>I serve as the technical bridge between rigorous statistical analysis and large-scale industrial AI systems. My work focuses on integrating advanced statistical techniques with state-of-the-art Deep Learning to ensure process reliability and optimize semiconductor manufacturing workflows.</p>
+                        <ul class="tl-bullets">
+                            <li><strong>Root Cause Analysis &amp; Process Validation:</strong> Leveraging inferential statistics and Bayesian modeling (PyMC, statsmodels, scikit-learn) to perform deep-dive analysis on wafer defectivity, identifying production root causes and validating process stability through rigorous statistical monitoring.</li>
+                            <li><strong>OOD Detection &amp; Uncertainty Quantification:</strong> Leading the design of a multi-model Out-of-Distribution detection framework. Implementing uncertainty quantification through C-LoRA adaptations for computer vision, enabling precise estimation of model confidence and epistemic uncertainty.</li>
+                            <li><strong>MLOps Pipeline Automation:</strong> Architecting automated data pipelines that leverage OOD filtering to ensure model training is strictly performed on In-Distribution data, minimizing human-in-the-loop dependencies and accelerating training cycles.</li>
+                            <li><strong>Technical Stack &amp; Deployment:</strong> Developing scalable production-grade solutions using PyTorch for deep learning, seaborn for interpretative data visualization, and integrating complex ML models into industrial production workflows.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="entry-meta">Technoprobe</div>
-            <p style="margin-top: 10px; font-size: 0.95rem;">
-                I serve as the technical bridge between rigorous statistical analysis and large-scale industrial AI systems or industrial process. My work focuses on integrating advanced statistical techniques with state-of-the-art Deep Learning to ensure process reliability and optimize manufacturing workflows.
-            </p>
-            <p style="font-size: 0.95rem; font-weight: 600; margin-bottom: 5px;">Key Responsibilities & Projects:</p>
-            <ul style="font-size: 0.95rem;">
-                <li><strong>Root Cause Analysis & Process Validation:</strong> Leveraging inferential statistics and Bayesian modeling (utilizing PyMC, statsmodels, scikit-learn) to perform deep-dive analysis on wafer defectivity. I identify production root causes and validate process stability through rigorous statistical monitoring.</li>
-                <li><strong>OOD Detection & Uncertainty Quantification:</strong> Leading the design of a multi-model Out-of-Distribution (OOD) detection framework. I implement uncertainty quantification through C-LoRA adaptations for computer vision, enabling precise estimation of model confidence and epistemic uncertainty.</li>
-                <li><strong>MLOps Pipeline Automation:</strong> Architecting automated data pipelines that utilize OOD filtering to ensure model training is strictly performed on In-Distribution (ID) data. This approach minimizes human-in-the-loop dependencies, significantly accelerating training cycles and increasing the overall robustness of inspection systems.</li>
-                <li><strong>Technical Stack & Deployment:</strong> Developing scalable production-grade solutions using PyTorch for deep learning, leveraging seaborn for interpretative data visualization, and integrating complex ML models into industrial production workflows.</li>
-            </ul>
-        </div>
 
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Football Data Scientist Consultant (Freelance)</div>
-                <div class="entry-date">Recent</div>
+            <div class="tl-item">
+                <div class="tl-date">Feb 2025<br>— May 2025</div>
+                <div class="tl-content">
+                    <div class="tl-title">Machine Learning Engineer Intern</div>
+                    <div class="tl-org">Technoprobe <span class="badge">Internship</span></div>
+                    <div class="tl-desc">
+                        <ul class="tl-bullets">
+                            <li><strong>Decision Support Systems:</strong> Developed data analysis projects aimed at supporting strategic decisions and improving corporate processes.</li>
+                            <li><strong>Statistical Quality Control:</strong> Applied Acceptance Sampling techniques to optimize resource allocation and ensure rigorous quality standards in manufacturing.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="entry-meta">Remote</div>
-            <p style="margin-top: 10px; font-size: 0.95rem;">
-                Conducted a comprehensive, data-driven analysis of the 2026 World Cup groups. The full analytical work is slated for publication through Andrea Marinozzi’s media channels on a group-by-group basis.
-            </p>
-            <ul style="font-size: 0.95rem;">
-                <li><strong>Project:</strong> Data-Driven Analysis for the 2026 World Cup Group Stage.</li>
-                <li><strong>Collaboration:</strong> Partnered with a cross-functional team of 4 (including L. Zanotti, L. Triolo, and L. Rossini) to deliver comprehensive insights for football media personality Andrea Marinozzi.</li>
-                <li><strong>Technical Approach:</strong> Developed an end-to-end Python pipeline for large-scale data acquisition and exploratory data analysis (EDA). Developed robust scripts to scrape and normalize tournament data.</li>
-                <li><strong>Statistical Processing:</strong> Transformed heterogeneous data points into actionable insights using custom metrics to evaluate team strength.</li>
-                <li><strong>Front-end Integration:</strong> Implemented a clean, responsive UI using Chart.js to visualize complex comparisons and rankings. (<a href="https://lnkd.in/dTSHzPFe" target="_blank">View Dashboard</a>)</li>
-                <li><strong>Key Deliverables:</strong> Leveraged statistical modeling to identify high-probability starting line-ups and perform performance-based scouting on key players.</li>
-                <li><strong>Outcome:</strong> Translated complex datasets into actionable, high-engagement content for social media and analytical reports.</li>
-            </ul>
-        </div>
 
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Machine Learning Engineer Intern</div>
-                <div class="entry-date">Feb 2025 - May 2025</div>
+            <div class="tl-item">
+                <div class="tl-date">2025<br>— Present</div>
+                <div class="tl-content">
+                    <div class="tl-title">Football Data Scientist Consultant</div>
+                    <div class="tl-org">Freelance · Remote <span class="badge">Freelance</span></div>
+                    <div class="tl-desc">
+                        <p>Data-driven analysis for the 2026 World Cup Group Stage, delivered in collaboration with football media personality Andrea Marinozzi. Worked within a cross-functional team of four engineers and analysts.</p>
+                        <ul class="tl-bullets">
+                            <li><strong>Data Acquisition:</strong> Developed robust Python scripts to scrape and normalize tournament data, ensuring consistency across heterogeneous sources.</li>
+                            <li><strong>Statistical Processing:</strong> Transformed raw data into actionable insights using custom metrics to evaluate team strength, identify high-probability starting line-ups, and perform performance-based scouting.</li>
+                            <li><strong>Front-end Integration:</strong> Built a clean, responsive visualization dashboard using Chart.js for complex comparisons and rankings, translating complex datasets into high-engagement content for social media and analytical reports.</li>
+                        </ul>
+                        <a class="tl-link" href="https://lnkd.in/dTSHzPFe" target="_blank"><i class="fas fa-external-link-alt"></i> View Dashboard</a>
+                    </div>
+                </div>
             </div>
-            <div class="entry-meta">Technoprobe</div>
-            <ul style="font-size: 0.95rem; margin-top: 10px;">
-                <li><strong>Decision Support Systems:</strong> Developed data analysis projects aimed at supporting strategic decisions and improving corporate processes.</li>
-                <li><strong>Statistical Quality Control:</strong> Applied Acceptance Sampling techniques to optimize resource allocation and ensure rigorous quality standards.</li>
-            </ul>
+
         </div>
     </section>
 
+    <!-- EDUCATION -->
     <section id="education">
-        <h2>Education</h2>
+        <div class="section-label">Education</div>
+        <div class="timeline">
 
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Master Degree in Data Science</div>
-                <div class="entry-date">2025 - Present</div>
+            <div class="tl-item">
+                <div class="tl-date">2025<br>— Present</div>
+                <div class="tl-content">
+                    <div class="tl-title">M.Sc. in Data Science</div>
+                    <div class="tl-org">University of Milano-Bicocca</div>
+                    <div class="tl-desc">
+                        <p>Personalized study plan focused on advanced statistical modeling and modern machine learning techniques — opting for advanced Bayesian statistics courses over standard introductory alternatives to strengthen probabilistic reasoning and uncertainty quantification.</p>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Advanced Machine Learning</span>
+                        <span class="tag">Bayesian Statistics (M)</span>
+                        <span class="tag">Bayesian Statistical Modeling (M)</span>
+                        <span class="tag">ML and Decision Models</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Text Mining &amp; Search</span>
+                        <span class="tag">Reinforcement Learning</span>
+                        <span class="tag">Data Semantics</span>
+                        <span class="tag">Financial Markets Analytics</span>
+                        <span class="tag">Data Management &amp; Viz</span>
+                    </div>
+                </div>
             </div>
-            <div class="entry-meta">University of Milano-Bicocca</div>
-            <p style="margin-top: 10px; font-size: 0.95rem;">
-                Designed a personalized study plan focused on advanced statistical modeling and modern machine learning techniques. Instead of standard introductory courses, opted for advanced Bayesian statistics and modeling to strengthen background in probabilistic reasoning and uncertainty quantification.
-            </p>
-            <div class="tags">
-                <span class="tag">Advanced Machine Learning</span>
-                <span class="tag">Bayesian Statistics & Modeling</span>
-                <span class="tag">ML and Decision Models</span>
-                <span class="tag">Reinforcement Learning</span>
-                <span class="tag">Data Semantics</span>
-                <span class="tag">NLP</span>
-            </div>
-        </div>
 
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Bachelor Degree in Statistics</div>
-                <div class="entry-date">2022 - 2025</div>
+            <div class="tl-item">
+                <div class="tl-date">2022 — 2025</div>
+                <div class="tl-content">
+                    <div class="tl-title">B.Sc. in Statistics</div>
+                    <div class="tl-org">University of Milano-Bicocca</div>
+                    <div class="tl-desc">
+                        Graduated with <em>110 cum Laude</em> — highest distinction. Developed deep foundations in probability theory, mathematical statistics, stochastic processes, and applied statistical inference.
+                    </div>
+                </div>
             </div>
-            <div class="entry-meta">University of Milano-Bicocca</div>
-            <p style="margin-top: 5px; font-size: 0.95rem;"><strong>Final Grade:</strong> 110 cum Laude</p>
-        </div>
-    </section>
 
-    <section id="conferences">
-        <h2>Conferences & Events</h2>
-        
-        <div class="entry">
-            <div class="entry-header">
-                <div class="entry-title">Football Science Conference</div>
-                <div class="entry-date">Recent</div>
-            </div>
-            <div class="entry-meta">Milan, Italy — Organized by MilanLab</div>
-            
-            <div class="block-quote">
-                "I recently had the pleasure of attending the first edition of the Football Science Conference in Milan, organized by MilanLab and the PhD program in Exercise and Sport Sciences. 
-                <br><br>
-                As a Data Science student and Machine Learning Engineer, it was incredibly insightful to explore how data is being leveraged to push the boundaries of athletic performance. From specialized training methodologies, like the Norwegian 4x4 method presented by Professor Jan Helgerud, to the broader application of advanced analytics in football, the event highlighted how data-driven insights are becoming the backbone of modern sports science. 
-                <br><br>
-                A huge thank you to the organizers Andrea Riboli PhD and speakers for such an inspiring day. It’s exciting to see how our field is directly impacting the future of football, and I look forward to applying these cross-disciplinary perspectives to my own work and studies."
-            </div>
         </div>
     </section>
 
-    <section id="projects">
-        <h2>Selected Projects</h2>
-        <ul class="project-list">
-            <li>
-                <strong>Tombola Montecarlo Simulation:</strong> A Python-based simulation of the Italian Tombola game to study probability distributions and winning strategies using Monte Carlo methods. 
-                [<a href="https://github.com/aronetommaso/TombolaSimulation" target="_blank">Code</a>]
-            </li>
-            <li>
-                <strong>Global Warming Analysis:</strong> Developed for the Data Visualization exam. Focuses on plotting complex climate data to visualize global warming trends effectively. 
-                [<a href="https://github.com/aronetommaso/DataViz-Project/tree/main" target="_blank">Code</a>]
-            </li>
-            <li>
-                <strong>Bitcoin Market Analysis:</strong> Developed for the Data Management exam. Covers data storage strategies, data modeling, and integration of market news. 
-                [<a href="https://github.com/aronetommaso/DataMan-Project" target="_blank">Code</a>]
-            </li>
-            <li>
-                <strong>Exoplanet Temperature Study:</strong> Developed for Computational Statistics. Analysis of exoplanet temperatures using advanced regression and classification models. 
-                [<a href="https://github.com/aronetommaso/Computational-Statistic-Project" target="_blank">Code</a>]
-            </li>
-            <li>
-                <strong>Earthquake Classification:</strong> Developed for Data Mining. Application of classification techniques to distinguish seismic events into earthquake and non-earthquake categories. 
-                [<a href="https://github.com/aronetommaso/Data-Mining-Project" target="_blank">Code</a>]
-            </li>
-        </ul>
-    </section>
-
+    <!-- SKILLS -->
     <section id="skills">
-        <h2>Technical Skills</h2>
-        <p style="font-size: 0.95rem;">
-            <strong>Programming Languages & Core Tools:</strong> Python, R, SQL, Git<br>
-            <strong>Machine Learning & Data Science:</strong> PyTorch, TensorFlow, Scikit-learn, Pandas<br>
-            <strong>Core Concepts:</strong> Bayesian Modeling, Natural Language Processing (NLP), Deep Learning, Statistical Analysis
-        </p>
+        <div class="section-label">Technical Skills</div>
+        <div class="skills-section">
+            <div class="skill-group">
+                <h4>Languages &amp; Core</h4>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Git</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>ML / DL Frameworks</h4>
+                <div class="tags">
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">PyMC</span>
+                    <span class="tag">statsmodels</span>
+                    <span class="tag">Pandas</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h4>Domains</h4>
+                <div class="tags">
+                    <span class="tag">Bayesian Modeling</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">NLP</span>
+                    <span class="tag">OOD Detection</span>
+                    <span class="tag">Statistical QC</span>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">Selected Projects</div>
+        <div class="projects-list">
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">Freelance · 2025</div>
+                    <div class="proj-title">2026 World Cup Group Stage Dashboard</div>
+                    <div class="proj-desc">End-to-end data pipeline for the 2026 World Cup — scraping, normalization, statistical modeling for team strength, starting line-up probability, and player scouting. Interactive visualization built with Chart.js, published via Andrea Marinozzi's channels.</div>
+                </div>
+                <a class="proj-link" href="https://lnkd.in/dTSHzPFe" target="_blank"><i class="fas fa-external-link-alt"></i> Dashboard</a>
+            </div>
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">MSc Data Science</div>
+                    <div class="proj-title">Global Warming Visual Analysis</div>
+                    <div class="proj-desc">Data Visualization exam project focused on plotting complex climate datasets to communicate global warming trends with clarity and scientific rigour.</div>
+                </div>
+                <a class="proj-link" href="https://github.com/aronetommaso/DataViz-Project/tree/main" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">MSc Data Science</div>
+                    <div class="proj-title">Bitcoin Market Analysis</div>
+                    <div class="proj-desc">Data Management exam project covering data storage strategies, data modeling, and integration of live market news streams for Bitcoin price analysis.</div>
+                </div>
+                <a class="proj-link" href="https://github.com/aronetommaso/DataMan-Project" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">BSc Statistics</div>
+                    <div class="proj-title">Exoplanet Temperature Study</div>
+                    <div class="proj-desc">Computational Statistics project — analysis of exoplanet temperatures using advanced regression and classification models on astronomical datasets.</div>
+                </div>
+                <a class="proj-link" href="https://github.com/aronetommaso/Computational-Statistic-Project" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">BSc Statistics</div>
+                    <div class="proj-title">Earthquake Classification</div>
+                    <div class="proj-desc">Data Mining project applying classification techniques to distinguish seismic events. Benchmarked multiple classifiers on imbalanced geophysical datasets.</div>
+                </div>
+                <a class="proj-link" href="https://github.com/aronetommaso/Data-Mining-Project" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+            <div class="project-row">
+                <div>
+                    <div class="proj-type">Personal Research</div>
+                    <div class="proj-title">Tombola Monte Carlo Simulation</div>
+                    <div class="proj-desc">Python-based simulation of the Italian Tombola game to study probability distributions and optimal strategies using Monte Carlo sampling methods.</div>
+                </div>
+                <a class="proj-link" href="https://github.com/aronetommaso/TombolaSimulation" target="_blank"><i class="fab fa-github"></i> Code</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONFERENCES & EVENTS -->
+    <section id="conferences">
+        <div class="section-label">Talks &amp; Events</div>
+
+        <div class="conf-item">
+            <div class="conf-name">Football Science Conference — 1st Edition</div>
+            <div class="conf-meta">Milan, Italy · 2025 · Organized by MilanLab &amp; PhD Program in Exercise and Sport Sciences</div>
+            <div class="conf-desc">
+                <p>Attended the inaugural edition of the Football Science Conference in Milan, an event bringing together sports scientists, data practitioners, and medical staff at the frontier of athletic performance research.</p>
+                <p style="margin-top: 10px;">Notable sessions included Professor Jan Helgerud's presentation on the Norwegian 4×4 method for cardiovascular conditioning, alongside a broader programme exploring how advanced analytics are becoming the operational backbone of modern sports science. The conference underscored a clear convergence between classical exercise physiology and data-driven methodologies — including machine learning-based performance modelling and injury prevention systems.</p>
+                <p style="margin-top: 10px;">The event reinforced my interest in the cross-disciplinary application of statistical and ML techniques to sports domains, perspectives I am actively carrying into my work and research.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Tommaso Arone · Milan, Italy</p>
+        <p>Last updated 2025 · <a href="mailto:tommasoarone@gmail.com" style="color: var(--muted); text-decoration: none;">tommasoarone@gmail.com</a></p>
+    </footer>
+
+</div>
 
 </body>
 </html>
